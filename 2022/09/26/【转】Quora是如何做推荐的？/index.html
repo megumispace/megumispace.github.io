@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0"><meta name="description" content="浅谈内容推荐 - MaoYR"><meta name="theme-color" content="#ebc65a"><title>浅谈内容推荐 - MaoYR</title><style>@font-face {
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0"><meta name="description" content="MaoYR"><meta name="theme-color" content="#ebc65a"><title>MaoYR</title><style>@font-face {
   font-family: 'Abril Fatface';
   font-style: normal;
   font-weight: 400;
@@ -28,36 +28,102 @@ gtag('config', 'xx-xxxxxxx-xx');</script><link rel="stylesheet" href="/css/tocbo
     orderedList: false,
     collapseDepth: 2,
   });
-})</script><link rel="preload" href="https://cdn.bootcss.com/highlight.js/9.6.0/styles/github.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.6.0/styles/github.min.css"><link rel="preload" href="https://fonts.googleapis.com/css?family=Abril+Fatface&amp;display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface&amp;display=swap"><meta name="generator" content="Hexo 6.3.0"></head><body><div class="mask-border"></div><div class="head"><div class="head__inner"><h1><a href="/">MaoYR</a></h1><p>写字的地方</p></div></div><div class="paper-container"><div class="main"><div class="location-bar"><div class="line-1"><div class="horizontal-line" style="height: 3px"></div></div><div class="line-2"><div class="horizontal-line" style="height: 1px"></div></div><p class="text">浅谈内容推荐</p><div class="switch-button"><input class="container_toggle" type="checkbox" id="switch" name="mode"><label for="switch">Toggle</label></div><div class="line-3"><div class="horizontal-line" style="height: 1px"></div></div></div><div class="main__2-col"><article class="post-view__article"><div class="article__infomation"><div class="posts-item"><h2 class="posts-item__title"><a href="">浅谈内容推荐</a></h2><span class="post__date">2022</span><a href="/tags/%E5%86%85%E5%AE%B9%E6%8E%A8%E8%8D%90/"><span class="post__tags">#内容推荐</span></a></div></div><div class="article__content"><p>按：做社区产品，内容推荐是一个绕不开的话题。传统论坛按版块分发内容的模式具有被动、低效等局限性，已不再适合如今快节奏的阅读模式，用户不再有大量的时间「沙里淘金」，因此基于内容的推荐模式被越来越多地应用到内容社区产品中。本文依据前人对内容推荐的研究，综合自身实践，简要讨论内容推荐的一些落地方式。</p>
-<hr>
-<h3 id="什么是内容推荐"><a href="#什么是内容推荐" class="headerlink" title="什么是内容推荐"></a><strong>什么是内容推荐</strong></h3><p>内容推荐是「基于内容本身的推荐」，即将内容进行分析后建立特征，然后依据这些特征给用户进行推荐，这种特征往往用「标签」来定义。标签在整个内容推荐体系中具有很重要的作用。那么如何进行标签的制定，即所谓「打标签」呢？</p>
-<h4 id="内容标签"><a href="#内容标签" class="headerlink" title="内容标签"></a><strong>内容标签</strong></h4><p><strong>1. 用户自行打标签</strong><br>用户自行打标签有两种方式：一是用户在平台预设标签下生产的内容会自动打上对应标签，二是平台允许用户自行添加一些标签。后一种方式可能由于用户对内容把握不足，或恶意操作，导致大量冗余标签或噪音标签产生，不利于后期维护。<br><strong>2. 机器自动打标签</strong><br>使用机器进行打标签，有一定的开发成本。一般可以结合分词技术和 TF-IDF 来提取关键词作为标签。这里需要注意的一点是，这种打标签的方式对文本的依赖度较高，如果社区内容为音频、视频等多媒体内容，这种方式仅能作用于内容的标题，因此可能会受一些「标题党」的干扰，但总体打标签效率比较高。<br><strong>3. 运营人工打标签</strong><br>运营人工打标签是一种最笨，但也是最有效的方法。通过运营人工干预，可以对内容标签进行复核，使标签和内容匹配度更高；同时通过运营介入，可以人工设置关联标签，将关联标签进行聚类处理。</p>
-<p><strong>因此，一般的做法是，用户在某一预设标签下生产内容，由机器进行自动打标签后，运营进行人工标签复审。</strong></p>
-<h4 id="用户标签"><a href="#用户标签" class="headerlink" title="用户标签"></a><strong>用户标签</strong></h4><p>除了内容标签外，如果想做到更精细化的推荐，还需要给用户进行「特征化分析」，也就是给用户也打上标签。用户和内容的交互，如点击、浏览、点赞、收藏等，都可以作为给用户打标签的基础。<br>用户打标签的过程需要注意两点，一是由于热门内容会干预用户的标签，因此对于热门内容的标签，需要做降权处理；二是用户的兴趣会随着时间衰减或发生变化，这时需要对用户的标签进行清洗，可以给内容增加「不感兴趣」的选项，用户触发后则对此标签做降权处理。</p>
-<hr>
-<h3 id="冷启动"><a href="#冷启动" class="headerlink" title="冷启动"></a><strong>冷启动</strong></h3><p>每个内容平台在初期都会遇到这样一个问题：巧妇难为无米之炊。新平台总会遇到，要么用户行为或偏好数据过少，要么内容数量不足的情况。这时候应该如何进行内容的推荐呢？</p>
+})</script><link rel="preload" href="https://cdn.bootcss.com/highlight.js/9.6.0/styles/github.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.6.0/styles/github.min.css"><link rel="preload" href="https://fonts.googleapis.com/css?family=Abril+Fatface&amp;display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface&amp;display=swap"><meta name="generator" content="Hexo 6.3.0"></head><body><div class="mask-border"></div><div class="head"><div class="head__inner"><h1><a href="/">MaoYR</a></h1><p>写字的地方</p></div></div><div class="paper-container"><div class="main"><div class="location-bar"><div class="line-1"><div class="horizontal-line" style="height: 3px"></div></div><div class="line-2"><div class="horizontal-line" style="height: 1px"></div></div><p class="text"></p><div class="switch-button"><input class="container_toggle" type="checkbox" id="switch" name="mode"><label for="switch">Toggle</label></div><div class="line-3"><div class="horizontal-line" style="height: 1px"></div></div></div><div class="main__2-col"><article class="post-view__article"><div class="article__infomation"><div class="posts-item"><h2 class="posts-item__title"><a href=""></a></h2><span class="post__date">2022</span></div></div><div class="article__content"><hr>
+<p>title: 【转】Quora是如何做推荐的？<br>top: false<br>cover: false<br>toc: true<br>mathjax: true<br>password:<br>summary:<br>tags: 收藏<br>categories: 收藏<br>photos: <a target="_blank" rel="noopener" href="https://pic2.zhimg.com/45a7702bc0b9864b833e8e6c3a8a21ad_b.png">https://pic2.zhimg.com/45a7702bc0b9864b833e8e6c3a8a21ad_b.png</a><br>知乎联合创始人张亮在值乎上问了俞军老师一个问题，「以您的使用体验看，您觉得知乎现在最急需做的三到五项产品改进是哪些？」俞军老师的回答中给的第一个意见就是，「个性化内容的挖掘和推送，我知道知乎里有大量内容是我感兴趣的，但知乎推送的内容只有很少是我愿意点击的，总让我有种入宝山而空回的感觉，这方面网易云音乐、淘宝、今日头条都是不错的学习对象。」</p>
+<p>其实知乎在2013年11月就推出了「开启新版首页动态体验」这个实验室功能，其中的一个feature就是「动态中的内容会根据用户间的关系、用户对话题的兴趣和内容的质量进行调整，不再严格依据时间排序」。但不知道为什么到现在好像也没有正式启用，而且这个实验室功能还是默认关闭的，需要用户自己手动打开。如果不知道这个功能的朋友们，可以去打开尝试一下，在「设置-实验室」里面勾选即可。</p>
+<p><img src="https://pic4.zhimg.com/e67d6710d0dd34aebc862650e7a82197_b.png"></p>
+<p>前段时间，Quora的VP Engineering机器学习大牛Xavier Amatriain，在WWW2016大会的Question Answering Workshop做了一个报告，《Machine Learning for Q&amp;A Sites: The Quora Example》[1]，我周末学习了一下，分享给大家。  </p>
+<p><strong>Quora的Mission：To share and grow the world’s knowledge。</strong>  </p>
+<p>Quora主要考虑的三个因素：Relevance、Quality和Demand。  </p>
+<p><img src="https://pic3.zhimg.com/92cab50896d2b246079074a448cf9c36_b.png"></p>
+<p>Quora核心的数据模型及其之间的关系。  </p>
+<p><img src="https://pic2.zhimg.com/45a7702bc0b9864b833e8e6c3a8a21ad_b.png"></p>
+<p><strong>Feed Ranking</strong>  </p>
+<p>Quora做推荐的一个最核心问题就是Personalized Feed Ranking。Quora是以问题、答案与主题为核心把「知识」串联起来，然后基于用户的顶和踩等动作来划分内容质量，最后再通过人和问题的Follow关系让知识在社区内流动起来。而个人Feed正是这种「流动」的最主要的载体。Xavier说Quora做Feed Ranking的难度要比Netflix大，这也正常，没有更大的挑战想来Xavier也不会跳槽是吧。Quora Feed Ranking的首要目标是确保推送进用户Feed的内容应该是和用户兴趣高度相关的，其次还需要考虑的包括用户之间的Follow关系以及互动，Xavier管这个叫做social relevance，另外还有时间因素，比如一些和热点事件相关的问答，也应该及时地推送进用户Feed。</p>
+<p>1、目标：Present most interesting stories for a user at a given time</p>
 <ul>
-<li>用户首次使用时，可以引导用户进行所感兴趣的标签选择，然后将该标签下的热门内容推荐给用户；若用户不选择标签，则可以采取全站热门推荐或人工筛选推荐，将平台中绝大部分用户关心的内容进行推荐</li>
-<li>如果平台中新内容较多时，可以在推荐时选取部分新内容进行推荐，每通过推荐增加一次阅读，传播度 +1，若起传播度高于某一预设的阈值时，可以认为该新内容值得推荐，更多进行曝光。这种方式可以解决新内容的冷启动，也可以增加新内容的曝光量。</li>
+<li><p>Interesting &#x3D; topical relevance + social relevance + timeliness</p>
+</li>
+<li><p>Stories &#x3D; questions + answers</p>
+</li>
 </ul>
-<hr>
-<h3 id="推荐方式"><a href="#推荐方式" class="headerlink" title="推荐方式"></a><strong>推荐方式</strong></h3><p>首先预设一个推荐的目标：将较新的、优质的、用户可能感兴趣的内容推荐给用户，会涉及到以下三个维度：</p>
+<p>2、主要使用的是个性化的learning-to-rank方法</p>
+<p>3、Xavier确认了一点，相比于时间排序(time-ordered)，相关度排序大大提升了用户参与度。</p>
+<p>4、面临的挑战，</p>
 <ul>
-<li>新（timescore） —— 反映内容的实时性（用户无关）</li>
-<li>优（qualityscore） —— 反映内容的质量（用户无关）</li>
-<li>兴趣（interestscore） —— 用户的个性化需求（用户相关）</li>
+<li><p>potentially many candidate stories</p>
+</li>
+<li><p>real-time ranking</p>
+</li>
+<li><p>optimize for relevance</p>
+</li>
 </ul>
-<p><strong>关键节点</strong></p>
+<p>下图是Quora做Feed Ranking最最基础的数据构成，Quora管这个叫做「impression logs」。</p>
+<p><img src="https://pic2.zhimg.com/27194ebd8443ea9bd3ddc8b7058115a5_b.png"></p>
+<p>围绕这些基础行为，Quora定义的Relevance函数如下。  </p>
+<p><img src="https://pic2.zhimg.com/dfb9a67c50b91a49db62393d266e75a9_b.png"></p>
+<p>简单讲就是使用一个「行为加权函数」来预测用户对一个story的感兴趣程度。有两种可选的计算方法，一种是把所有行为弄到一个回归模型里面直接预测最终值，另外一种就是先分别预测每个动作的可能性（比如顶、阅读、分享等）然后再综合起来加权求和。第一种简单，但可解释性稍差，第二种可以更好的利用每个动作信号，但需要给每个动作配一个分类器，计算消耗大。  </p>
+<p>Quora主要使用的三类模型如下。  </p>
+<p><img src="https://pic3.zhimg.com/c718750cb82125092bf4661250cb7a9a_b.png"></p>
+<p>另外Xavier也强调了特征工程的重要性，在这块下功夫搞一下对最终能得到一个好的ranking结果非常有帮助，如果能够实时在线的更新特征就更好了，这样可以更及时地对用户的行为作出响应。Quora最主要的特征包括：  </p>
+<ul>
+<li><p>user (e.g. age, country, recent activity)</p>
+</li>
+<li><p>story (e.g. popularity, trendiness, quality)</p>
+</li>
+<li><p>interactions between the two (e.g. topic or author affinity)</p>
+</li>
+</ul>
+<p>从整体框架来看，Quora的Feed Ranking也没有什么太特别的地方，基本上也是业界的标准打法。Quora比较特别的是它的数据模型相对其他网站更复杂，之间的关系也更多样化。比如从用户角度看，既可以follow其他用户User，又可以follow问题Question，还可以follow主题Topic。  </p>
 <ol>
-<li>计算时间衰减得分：时间越新，得分越高。参考函数：1&#x2F;log(a*x+10, 10)，其中 x 为发表日期与当前日期的时间差，a 为常量。</li>
-<li>计算内容质量得分：综合内容的阅读、点赞、收藏等维度计算得出。参考函数：sum(c&#x2F;(1+exp(-(x-a)&#x2F;b)))，其中 x 为影响因素的数值，a 为该因素的均值，c 为影响因素的权重，b 为常量。</li>
-<li>计算影响用户兴趣的因素</li>
-<li>去重：已推荐给用户的内容应从推荐列表中移除。</li>
-<li>控制数量：一次推荐给用户的数量不宜过多，可从某一数量开始逐渐递增或递减。</li>
-<li>控制边界：在极端情况下，会出现完全无内容推荐或推荐内容被消费完全，这种情况下应允许不进行推荐，而按照时间维度展示所有用户关注标签的内容。<br><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2018/2/1/1615046e69068ed3~tplv-t2oaga2asx-image.image" alt="一般推荐路径"></li>
+<li><p>Follow用户接收到的信息范围更广也更多样化，惊喜内容很可能就是来自于自己关注的有趣的用户，但也可能最容易制造不相关的内容噪音，这块的最重要工作是用户专业度的评估。</p>
+</li>
+<li><p>Question&#x2F;Answer是Quora最核心的内容元素，也是驱动Quora体系里知识流动的原力，这块的主要工作是引导更多的高专业度用户来贡献优质答案，另外就是如何激发生产出更多的好问题（甚至是自动生成问题），要计算answer ranking，还有要做反sapm的工作。</p>
+</li>
+<li><p>Topic是对一个主题内容的聚合，Topic在Quora的信息架构里面承载着极其重要的角色，是知识结构的骨架，Quora管这个叫做Topic Network，如何构建Topic Network本身就是一个非常大的挑战，另外还需要解决的问题包括，如何把Topic下（潜在）优质的问题发掘出来，以及如何把水问题降权和过滤&#x2F;合并重复问题等。</p>
+</li>
 </ol>
-<hr>
-<h3 id="其他注意点"><a href="#其他注意点" class="headerlink" title="其他注意点"></a><strong>其他注意点</strong></h3><p><strong>1. 时效性内容</strong><br>对于与时间强相关的内容，例如新闻或突发事件等，需要与普通的推荐内容区分开，做单独的推荐通道。</p>
-<p><strong>2. 内容排序</strong><br>受顺序效应影响，在推荐时应注意推荐内容的排序，和用户最相关、质量最高的内容应排在顶部。通常在有用户信息的情况下，可以将推荐出的内容按和用户相关度进行排序；若没有用户信息时，则可单独依据内容本身的质量进行排序。</p>
-<p><strong>3. 长尾内容</strong><br>平台里一般都会存在一些长尾内容，这部分如果不进行推荐，则很难触达用户。针对长尾内容，可以在一定维度进行统一提取后，当做新内容重新进行推荐，但需注意时效性内容不适合使用此方法。</p>
-</div></article><div class="post-view__sidebar"><div class="sidebar"><div class="tocbot"><h2>Toc</h2><div class="toc__content"></div></div><h2>Links</h2><div class="sidebar__link"><ul><li><a target="_blank" rel="noopener" href="https://github.com/megumispace">Github</a></li><li><a target="_blank" rel="noopener" href="https://www.zhihu.com/people/mio_sama">Zhihu</a></li><li><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/632c5e0516f2c2beb17cd51c.jpg">WeChat</a></li><li><a href="mailto:lotus110606@protonmail.com">Mail</a></li></ul></div><h2>Archives</h2><div class="sidebar__archives"><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a></li></ul></div><h2>Categories</h2><div class="sidebar__categories"><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%A7%E5%93%81/">产品</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%94%B6%E8%97%8F/">收藏</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A4%BE%E5%8C%BA%E5%86%85%E5%AE%B9/">社区内容</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E6%83%B3/">随想</a></li></ul></div><h2>Tags</h2><div class="sidebar__tags"><ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%A7%E5%93%81/" rel="tag">产品</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E5%AE%B9%E5%95%86%E4%B8%9A%E5%8C%96/" rel="tag">内容商业化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8/" rel="tag">内容安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E5%AE%B9%E6%8E%A8%E8%8D%90/" rel="tag">内容推荐</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%94%B6%E8%97%8F/" rel="tag">收藏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9A%8F%E6%83%B3/" rel="tag">随想</a></li></ul></div></div></div></div><div class="horizontal-line" style="height: 1px"></div><div class="main__bottom"><div class="pre-next"><a class="pre-button" href="/2022/09/23/%E7%A4%BE%E5%8C%BA%E4%BA%A7%E5%93%81%E9%82%A3%E7%82%B9%E4%BA%8B%E2%80%94%E2%80%94%E5%9E%83%E5%9C%BE%E5%B8%96%E4%B8%8E%E5%AE%89%E5%85%A8%E7%AD%96%E7%95%A5/">社区产品那点事——垃圾帖与安全策略</a><a class="next-button" href="/2022/09/21/%E8%AF%95%E7%9D%80%E8%AE%B2%E8%AE%B2%E7%94%A8%E6%88%B7%E6%95%85%E4%BA%8B/">试着讲讲用户故事</a></div></div></div></div><div class="footer"><span>©️2019-2022 Designed By&nbsp;<strong><a target="_blank" rel="noopener" href="https://github.com/random-yang">RandomYang</a></strong> Powered By&nbsp;</span><strong><a target="_blank" rel="noopener" href="https://hexo.io">hexo</a></strong></div><div class="darkmode-mask" id="darkmode-mask"></div><div class="sidebar__button"></div></body></html>
+<p>围绕着这些核心问题，Quora分别都进行了更深入的工作。  </p>
+<p><strong>Answer Ranking</strong>  </p>
+<p>Goal：Given a question and n answers, come up with the ideal ranking of those n answers.  </p>
+<p>Quora主要考虑了下面三大维度来进行Ranking计算，每个大维度下面又包含了很多的features。  </p>
+<ol>
+<li><p>答案内容本身的质量度。Quora对什么是「好的答案」有明确的指导[2]，比如应该是有事实根据的，有可复用价值的，提供了解释说明的，进行了好的格式排版的等等。</p>
+</li>
+<li><p>互动，包括顶&#x2F;踩、评论、分享、收藏、点击等等。</p>
+</li>
+<li><p>回答者本身的一些特征，比如回答者在问题领域的专业度。</p>
+</li>
+</ol>
+<p>另外这块的工作也包含非个性化的与个性化的两部分，某些类问题的排序是非个性化的，最好的答案对所有用户而言都是一致的，而另外一些问题则是个性化的，对于每个人而言最好的答案会有自己个性化的判断。总之，Answer Ranking对Quora非常重要，这块Quora做得很细致，Quora的blog上有一篇专门的文章讲这个，有兴趣的朋友可以去看看原文[3]。  </p>
+<p><img src="https://pic3.zhimg.com/f7647f51bca047478eb79bde9f53e23a_b.png"></p>
+<p><strong>Ask2Answers</strong>  </p>
+<p>A2A是Quora产品里面非常重要的一个功能，本来Quora是可以直接把相关问题推荐给系统认为的合适的回答者的，Quora最开始也是这么做的，但系统自动做这事儿显然不如发动群众人肉邀请回答来得感觉好，A2A操作增强了仪式感，让被邀请者有种被人需要的感觉，心理上很满足，另外这也是一种社交动作，社交的精髓之一就是为用户制造「装逼」的便利，回答问题前很随意的「谢邀&#x2F;泻药」，一切尽在不言中了。这个功能看似很简单，Quora也是下了功夫的，Quora把A2A这事model成了一个机器学习问题：Given a question and a viewer rank all other users based on how 「well-suited」 they are。其中「well-suited」&#x3D; likelihood of viewer sending a request + likelihood of the candidate adding a good answer，既要考虑浏览用户发送邀请的可能性，又要考虑被邀请者受邀回答的可能性。Quora的blog上也有一篇文章详细讲解了他们的做法[4]。  </p>
+<p><img src="https://pic2.zhimg.com/5927313e96ff8e2cca1ea9d3f06ab705_b.jpg"></p>
+<p><strong>Topic Network</strong>  </p>
+<p>Quora花了很大力气来正确引导用户给内容打标签，持续不断坚持这项工作的好处开始逐渐显露出来了，他们发现[5]，  </p>
+<ol>
+<li><p>随着用户群体的扩大，Topic正在呈现出迅速多样化的势头。</p>
+</li>
+<li><p>很多领域都自组织出了相当不错的层级知识结构。</p>
+</li>
+</ol>
+<p>Quora相信这种依靠社群来组织领域知识的方式是可行的。  </p>
+<p><img src="https://pic4.zhimg.com/805a3756f437db871ea52e1eed21936f_b.png"></p>
+<p><strong>User Trust&#x2F;Expertise Inference</strong>  </p>
+<p>这是Quora另一件非常重要的事情，Quora需要找出某个领域的专家，然后通过产品引导这些专家在这个领域里贡献更多的优质答案。Quora会考虑用户在某个领域里回答问题的多少，接收到的顶、踩、感谢、分享、收藏及浏览等数据。另外还有一个很重要的是专业度的传播效应，比如Xavier在推荐系统领域对某个答案顶了一下，那么这个答案作者在推荐系统领域很可能具备较高的专业度。  </p>
+<p><strong>其他</strong>  </p>
+<p>其他相关的，包括推荐主题、推荐用户、相关问题、重复问题、反Spam等等，Quora大量地在使用机器学习的方法来解决这些问题。  </p>
+<p>Quora最大的宝藏，就是这几年在各个领域不断积累下来的大量有价值的内容，Quora自然也少不了对这些的挖掘，有篇《Mapping the Discussion on Quora Over Time through Question Text》[6]，就是一个很好的挖掘数据价值的案例。作者陶雯雯，看个人简介是北大元培计划的，妥妥地又一个美女学霸，感觉知乎可以出手了。  </p>
+<p>Facebook等几个主题随时间的变化情况  </p>
+<p><img src="https://pic3.zhimg.com/234c14eaaf638175c295b02f4b4a840a_b.png"></p>
+<p>2014年4季度美国的热点主题  </p>
+<p><img src="https://pic1.zhimg.com/1c78192b49bc47c9e9eb41ec9479c92c_b.png"></p>
+<p>参考资料：</p>
+<p>[1] <a target="_blank" rel="noopener" href="http://www.slideshare.net/xamat/machine-learning-for-qa-sites-the-quora-example">http://www.slideshare.net/xamat/machine-learning-for-qa-sites-the-quora-example</a></p>
+<p>[2] <a target="_blank" rel="noopener" href="https://www.quora.com/What-does-a-good-answer-on-Quora-look-like-What-does-it-mean-to-be-helpful/answer/Quora-Official-Account">https://www.quora.com/What-does-a-good-answer-on-Quora-look-like-What-does-it-mean-to-be-helpful/answer/Quora-Official-Account</a></p>
+<p>[3] <a target="_blank" rel="noopener" href="https://engineering.quora.com/A-Machine-Learning-Approach-to-Ranking-Answers-on-Quora">https://engineering.quora.com/A-Machine-Learning-Approach-to-Ranking-Answers-on-Quora</a></p>
+<p>[4] <a target="_blank" rel="noopener" href="https://engineering.quora.com/Ask-To-Answer-as-a-Machine-Learning-Problem">https://engineering.quora.com/Ask-To-Answer-as-a-Machine-Learning-Problem</a></p>
+<p>[5] <a target="_blank" rel="noopener" href="https://data.quora.com/The-Quora-Topic-Network-1">https://data.quora.com/The-Quora-Topic-Network-1</a></p>
+<p>[6] <a target="_blank" rel="noopener" href="https://data.quora.com/Mapping-the-Discussion-on-Quora-Over-Time-through-Question-Text">https://data.quora.com/Mapping-the-Discussion-on-Quora-Over-Time-through-Question-Text</a></p>
+</div></article><div class="post-view__sidebar"><div class="sidebar"><div class="tocbot"><h2>Toc</h2><div class="toc__content"></div></div><h2>Links</h2><div class="sidebar__link"><ul><li><a target="_blank" rel="noopener" href="https://github.com/megumispace">Github</a></li><li><a target="_blank" rel="noopener" href="https://www.zhihu.com/people/mio_sama">Zhihu</a></li><li><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/632c5e0516f2c2beb17cd51c.jpg">WeChat</a></li><li><a href="mailto:lotus110606@protonmail.com">Mail</a></li></ul></div><h2>Archives</h2><div class="sidebar__archives"><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a></li></ul></div><h2>Categories</h2><div class="sidebar__categories"><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%A7%E5%93%81/">产品</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%94%B6%E8%97%8F/">收藏</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A4%BE%E5%8C%BA%E5%86%85%E5%AE%B9/">社区内容</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E6%83%B3/">随想</a></li></ul></div><h2>Tags</h2><div class="sidebar__tags"><ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%A7%E5%93%81/" rel="tag">产品</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E5%AE%B9%E5%95%86%E4%B8%9A%E5%8C%96/" rel="tag">内容商业化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8/" rel="tag">内容安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E5%AE%B9%E6%8E%A8%E8%8D%90/" rel="tag">内容推荐</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%94%B6%E8%97%8F/" rel="tag">收藏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9A%8F%E6%83%B3/" rel="tag">随想</a></li></ul></div></div></div></div><div class="horizontal-line" style="height: 1px"></div><div class="main__bottom"><div class="pre-next"><a class="pre-button">没有更多</a><a class="next-button" href="/2022/09/26/%E7%94%B1%E3%80%8C%E7%94%A8%E6%88%B7%E6%A0%87%E7%AD%BE%E3%80%8D%E6%83%B3%E5%88%B0%E7%9A%84/">由「用户标签」想到的</a></div></div></div></div><div class="footer"><span>©️2019-2022 Designed By&nbsp;<strong><a target="_blank" rel="noopener" href="https://github.com/random-yang">RandomYang</a></strong> Powered By&nbsp;</span><strong><a target="_blank" rel="noopener" href="https://hexo.io">hexo</a></strong></div><div class="darkmode-mask" id="darkmode-mask"></div><div class="sidebar__button"></div></body></html>
